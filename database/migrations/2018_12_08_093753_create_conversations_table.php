@@ -23,8 +23,8 @@ class CreateConversationsTable extends Migration
             $table->foreign('contact_id')->references('id')->on('users');
             //Ultimo mensaje con fecha/hora que se envió,
             //se hace asi para traer la data en una misma consulta y con FK
-            $table->text('last_message');
-            $table->dateTime('last_time');
+            $table->text('last_message')->nullable();
+            $table->dateTime('last_time')->nullable();
             $table->boolean('listen_notifications')->default(true);
             $table->boolean('has_blocked')->default(false);
 
