@@ -38,7 +38,9 @@ return [
             'driver' => 'database',
             'table' => 'jobs',
             'queue' => 'default',
+            //'expire' => 14400,
             'retry_after' => 90,
+            //'retry_after' => 7200,
         ],
 
         'beanstalkd' => [
