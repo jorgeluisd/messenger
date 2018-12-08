@@ -6,10 +6,10 @@
     <b-row align-h="center">
         <b-col cols="8">
             <b-card title="Registro">
-                
+
                 @if($errors->any())
                     <b-alert show variant="danger">
-                        <ul>
+                        <ul class="mb-0">
                             @foreach($errors->all() as $error)
                                 <li>{{$error}}</li>
                             @endforeach
