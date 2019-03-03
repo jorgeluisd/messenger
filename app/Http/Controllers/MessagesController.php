@@ -14,15 +14,19 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $userId = Auth::id();
+        $contactId = $request->contact_id;
         return Message::select(
             'id', 
             DB::raw("IF(from_id=$userId,true,false) AS written_by_me"),
             'created_at', 
             'content'
-        )->get();
+        )
+        ->where([['from_id',$userId], ['to_id',$contactId]])
+        ->orWhere([['from_id',$contactId], ['to_id',$userId]])
+        ->get();
         //return Message::where('user_id', Auth::id())->get();
     }
 

@@ -57,7 +57,7 @@
         },
         methods: {
             getMessages() {
-                axios.get('/api/messages')
+                axios.get('/api/messages?contact_id='+2)
                     .then((response) => {
                         console.log(response.data)
                         this.messages = response.data

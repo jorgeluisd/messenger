@@ -33431,7 +33431,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getMessages: function getMessages() {
             var _this = this;
 
-            axios.get('/api/messages').then(function (response) {
+            axios.get('/api/messages?contact_id=' + 2).then(function (response) {
                 console.log(response.data);
                 _this.messages = response.data;
             });
