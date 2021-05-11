@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  php:
+    build: .
+    volumes:
+      - /home/jorge/www/bdt-us/src:/var/www
+    external_links:
+      - databases:mysql
+      - databases:redis
+
+  nginx:
+    image: nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - /home/jorge/www/bdt-us/.docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - /home/jorge/www/bdt-us/src:/var/www
+    depends_on:
+      - php
